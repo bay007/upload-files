@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Favorite from "./Favorite";
+import Favorite from "./Favorite/Favorite";
 var photos = [
   {
     id: 1,
