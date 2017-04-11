@@ -46,12 +46,11 @@ var photos=[{
 
 class App extends Component {
   constructor(props){
-    super(props)
+    super(props);
 
     this.state={
       photo:[]
-    }
-
+    };
   }
 
   render() {
@@ -90,7 +89,9 @@ class Header extends Component{
 
 function FavoriteImage({photos}){
     const favoriteImage=photos.filter((x)=>{return x.isEditable===true})
-      .map((y)=>{return <img key={y.id} src={y.url} alt="FavoriteImage"></img> })
+      .map((y)=>{
+            return <img key={y.id} src={y.url} alt="FavoriteImage"></img>;
+           });
   
     return (<div>
      {favoriteImage}
@@ -101,16 +102,16 @@ function FavoriteDetail({photos}){
     const menuSections=[];
     const menuItems=[];
     
-    if(photos.filter((q)=>{return q.isEditable===true}).length>0){
+    if(photos.filter((q)=>{return q.isEditable===true;}).length>0){
      photos.map((x)=>{x.menuSections.map((y)=>{
-                        menuSections.push(y.name+',')
+                        menuSections.push(y.name+',');
                       });
                   });
     
     photos.filter((q)=>{return q.isEditable===true})
     .map((x)=>{x.menuSections.map((y)=>{
                       y.menuItems.map((z)=>{
-                        if(z) menuItems.push(z.rect)
+                        if(z) menuItems.push(z.rect);
                       });
                     });
                   });
@@ -124,15 +125,15 @@ function FavoriteDetail({photos}){
       </p>
     </div>);
     }else{
-      return (<div></div>)
+      return (<div></div>);
     }
   
 }
 
 function PhotoEditor({uploadPhoto,photos}){
   const items=photos.map((x)=>{
-                return <PhotoItem src={x.url} key={x.id}/>
-              })
+                return <PhotoItem src={x.url} key={x.id}/>;
+              });
     return (<div>
       {items}
       {uploadPhoto}
@@ -141,14 +142,11 @@ function PhotoEditor({uploadPhoto,photos}){
 }
 
 function PhotoItem({src}){
-  //console.log(photos)
-  //const items=photos.map((x)=>{return <img key={x.id} src={x.url}></img>})
-
   return(<div>
     <img src={src}></img>
-  </div>)
+  </div>);
 }
 
 function UploadPhoto(){
-  return(<div>Upload Area</div>)
+  return(<div>Upload Area</div>);
 }
