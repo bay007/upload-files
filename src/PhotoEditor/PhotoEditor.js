@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({ photos }) => {
+const PhotoEditor = ({ photos }) => {
   const items = photos.map(photo => {
     return (
       <div key={photo.id}>
@@ -16,6 +16,8 @@ export default ({ photos }) => {
     </div>
   );
 };
+
+export default PhotoEditor;
 
 function ImageOptions({ id }) {
   function onclickUploadPhoto(a) {

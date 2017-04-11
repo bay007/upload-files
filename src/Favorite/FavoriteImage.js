@@ -1,3 +1,6 @@
 import React from "react";
 
-export default ({ photo }) => <img src={photo.url} alt="FavoriteImage" />;
+const FavoriteImage = ({ photo }) => (
+  <img src={photo.url} alt="FavoriteImage" />
+);
+export default FavoriteImage;

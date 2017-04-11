@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({ photo }) => {
+const FavoriteDetail = ({ photo }) => {
   const menuSections = [];
 
   photo.menuSections.map(menuSection => {
@@ -43,3 +43,4 @@ export default ({ photo }) => {
     </div>
   );
 };
+export default FavoriteDetail;

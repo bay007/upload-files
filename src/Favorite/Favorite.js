@@ -2,7 +2,7 @@ import React from "react";
 import FavoriteImage from "./FavoriteImage";
 import FavoriteDetail from "./FavoriteDetail";
 
-export default ({ photos }) => {
+const Favorite = ({ photos }) => {
   const photo = photos.find(photo => photo.isEditable);
   return (
     <div className="favorite">
@@ -11,3 +11,4 @@ export default ({ photos }) => {
     </div>
   );
 };
+export default Favorite;
