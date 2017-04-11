@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Favorite from "./Favorite/Favorite";
+import PhotoEditor from "./PhotoEditor/PhotoEditor";
 var photos = [
   {
     id: 1,
@@ -64,7 +65,7 @@ class App extends Component {
       <div className="App">
         <Header numberPage={2} />
         <Favorite photos={photos} />
-        <PhotoEditor photos={photos} uploadPhoto={<UploadPhoto />} />
+        <PhotoEditor photos={photos} />
       </div>
     );
   }
@@ -80,55 +81,4 @@ class Header extends Component {
       </div>
     );
   }
-}
-
-function PhotoEditor({ uploadPhoto, photos }) {
-  const items = photos.map(x => {
-    return (
-      <div key={x.id}>
-        <ImageOptions id={x.id} />
-        <PhotoItem src={x.url} />
-      </div>
-    );
-  });
-  return (
-    <div className="photoEditor">
-      {items}
-      {uploadPhoto}
-    </div>
-  );
-}
-
-function PhotoItem({ src }) {
-  return (
-    <div>
-
-      <img src={src} />
-    </div>
-  );
-}
-
-function UploadPhoto() {
-  function onclickUploadPhoto() {
-    alert();
-  }
-
-  return (
-    <div className="uploadPhoto" onClick={onclickUploadPhoto}>
-      <input type="file" />
-      Seleccione aqui su archivo
-    </div>
-  );
-}
-
-function ImageOptions({ id }) {
-  function onclickUploadPhoto(a) {
-    alert(a);
-  }
-
-  return (
-    <div onClick={onclickUploadPhoto.bind(this, id)}>
-      Image Options
-    </div>
-  );
 }
