@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Favorite from "./Favorite";
 var photos = [
   {
     id: 1,
@@ -62,12 +63,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header numberPage={2} />
-        <Favorite
-          favoriteImage={<FavoriteImage photos={photos} />}
-          favoriteDetail={<FavoriteDetail photos={photos} />}
-        />
+        <Favorite photos={photos} />
         <PhotoEditor photos={photos} uploadPhoto={<UploadPhoto />} />
-
       </div>
     );
   }
@@ -82,90 +79,6 @@ class Header extends Component {
         <h1>Página {this.props.numberPage || "-"}</h1>
       </div>
     );
-  }
-}
-
-function Favorite({ favoriteImage, favoriteDetail }) {
-  return (
-    <div className="favorite">
-      {favoriteImage}
-      {favoriteDetail}
-    </div>
-  );
-}
-
-function FavoriteImage({ photos }) {
-  const favoriteImage = photos
-    .filter(x => {
-      return x.isEditable === true;
-    })
-    .map(y => {
-      return <img key={y.id} src={y.url} alt="FavoriteImage" />;
-    });
-
-  return (
-    <div>
-      {favoriteImage}
-    </div>
-  );
-}
-
-function FavoriteDetail({ photos }) {
-  const menuSections = [];
-  const menuItems = [];
-
-  if (
-    photos.filter(q => {
-      return q.isEditable === true;
-    }).length > 0
-  ) {
-    photos.map(x => {
-      x.menuSections.map(y => {
-        menuSections.push(y.name + ",");
-      });
-    });
-
-    photos
-      .filter(q => {
-        return q.isEditable === true;
-      })
-      .map(x => {
-        x.menuSections.map(y => {
-          y.menuItems.map(z => {
-            if (z) menuItems.push(z.rect);
-          });
-        });
-      });
-
-    const goToMenuEditor = (
-      <span
-        className="Rounded"
-        onClick={() => {
-          alert("Hacia Menu editor");
-        }}
-      >
-        Edit
-      </span>
-    );
-    return (
-      <div>
-
-        <div><p>Menu Sections: {menuSections}</p></div>
-        <p>
-          {goToMenuEditor}
-          {" "}
-          Menu Items: Cuenta con
-          {" "}
-          <strong>{menuItems.length}</strong>
-          {menuItems.length === 1 ? " un" : ""}
-          {" "}
-          elemento
-          {menuItems.length === 1 ? "" : "s"}
-        </p>
-      </div>
-    );
-  } else {
-    return <div />;
   }
 }
 
