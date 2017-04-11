@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 var photos=[{
         id: 1,
         url: 'http://www.ofifacil.com/ideas-ejemplos/varios/menu-carta-restaurante-design-diseno-maquetacion-009.jpg',
@@ -61,7 +62,7 @@ class App extends Component {
             favoriteImage={<FavoriteImage photos={photos}/>}
             favoriteDetail={<FavoriteDetail photos={photos}/>}
           />
-          <PhotoEditor 
+          <PhotoEditor
             photos={photos}
             uploadPhoto={<UploadPhoto/>}
           />
@@ -76,12 +77,12 @@ export default App;
 
 class Header extends Component{
   render(){
-    return (<div><h1>Página {this.props.numberPage||'-'}</h1></div>);
+    return (<div className="App-header"><h1>Página {this.props.numberPage||'-'}</h1></div>);
   }
 }
 
  function Favorite({favoriteImage,favoriteDetail}){
-    return (<div>
+    return (<div className="favorite">
           {favoriteImage}
           {favoriteDetail}
       </div>);
@@ -117,36 +118,59 @@ function FavoriteDetail({photos}){
                   });
     
     
-    
+    const goToMenuEditor=<span className="Rounded" onClick={()=>{alert("Hacia Menu editor");}}>Edit</span>;
     return (<div>
+      
       <div><p>Menu Sections: { menuSections }</p></div>
-      <p>Menu Items: Cuenta con <strong>{menuItems.length}</strong>
+      <p>{goToMenuEditor} Menu Items: Cuenta con <strong>{menuItems.length}</strong>
          {menuItems.length===1?' un':''} elemento{menuItems.length===1?'':'s'}
       </p>
     </div>);
     }else{
       return (<div></div>);
     }
-  
 }
 
 function PhotoEditor({uploadPhoto,photos}){
   const items=photos.map((x)=>{
-                return <PhotoItem src={x.url} key={x.id}/>;
+                return (
+                  <div  key={x.id}>
+                    <ImageOptions id={x.id}/>
+                    <PhotoItem src={x.url} />
+                  </div>
+                );
               });
-    return (<div>
+    return (<div className="photoEditor">
       {items}
       {uploadPhoto}
     </div>);
-  
 }
 
 function PhotoItem({src}){
   return(<div>
+    
     <img src={src}></img>
   </div>);
 }
 
 function UploadPhoto(){
-  return(<div>Upload Area</div>);
+  function onclickUploadPhoto(){
+    alert();
+  };
+
+  return(<div className="uploadPhoto" onClick={onclickUploadPhoto}>
+        <input type="file"/>
+        Seleccione aqui su archivo
+        </div>);
+}
+
+
+function ImageOptions({id}){
+  function onclickUploadPhoto(a){
+    alert(a);
+  };
+
+  return(<div onClick={onclickUploadPhoto.bind(this,id)}>
+  Image Options
+  </div>);
 }
