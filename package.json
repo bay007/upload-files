@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "eslint": "^3.19.0",
-    "react": "^15.5.3",
-    "react-dom": "^15.5.3"
+    "@blueprintjs/core": "^1.14.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "styled-components": "^1.4.4"
   },
   "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-defaults": "^9.0.0",
     "react-scripts": "0.9.5"
   },
   "scripts": {

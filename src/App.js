@@ -6,7 +6,7 @@ var photos = [
   {
     id: 1,
     url: "http://www.ofifacil.com/ideas-ejemplos/varios/menu-carta-restaurante-design-diseno-maquetacion-009.jpg",
-    isEditable: true,
+    isEditable: false,
     menuSections: [
       {
         name: "Breakfast",
@@ -27,8 +27,8 @@ var photos = [
   },
   {
     id: 2,
-    url: "http://www.ofifacil.com/ideas-ejemplos/varios/im33g18.jpg",
-    isEditable: false,
+    url: "http://www.ghk.mx/imagenes/hkc-mariscos.jpg",
+    isEditable: true,
     menuSections: [
       {
         name: "Lunch",

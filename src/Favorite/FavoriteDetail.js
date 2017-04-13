@@ -1,21 +1,19 @@
-import React from "react";
-
+import React from 'react';
+import { IconClasses, Button } from '@blueprintjs/core';
 const FavoriteDetail = ({ photo }) => {
   const menuSections = [];
 
   photo.menuSections.map(menuSection => {
-    menuSections.push(menuSection.name, ",");
+    menuSections.push(menuSection.name, ',');
   });
 
   const goToMenuEditor = (
-    <span
-      className="Rounded"
+    <Button
+      iconName="edit"
       onClick={() => {
-        alert("Hacia Menu editor");
+        alert('Hacia Menu editor');
       }}
-    >
-      Edit
-    </span>
+    />
   );
 
   const numMenuItems = photo.menuSections.reduce(
@@ -31,14 +29,14 @@ const FavoriteDetail = ({ photo }) => {
       <div><p>Menu Sections: {menuSections}</p></div>
       <p>
         {goToMenuEditor}
-        {" "}
+        {' '}
         Menu Items: Cuenta con
-        {" "}
+        {' '}
         <strong>{photo.menuSections.length}</strong>
-        {numMenuItems === 1 ? " un" : ""}
-        {" "}
+        {numMenuItems === 1 ? ' un' : ''}
+        {' '}
         elemento
-        {numMenuItems === 1 ? "" : "s"}
+        {numMenuItems === 1 ? '' : 's'}
       </p>
     </div>
   );
